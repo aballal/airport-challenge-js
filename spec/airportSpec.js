@@ -6,8 +6,7 @@ describe('Airport', function(){
     plane = new Plane;
   });
 
-  it('lands a plane', function() {
-    plane.land(airport)
-    expect(airport.planes).toContain(plane);
+  it('has no planes to begin with', function() {
+    expect(airport.planes()).toEqual([]);
   });
 });
