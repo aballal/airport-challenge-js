@@ -1,0 +1,1 @@
+var Airport = function(){};
