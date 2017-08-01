@@ -1,13 +1,13 @@
 'use strict';
 
 var Airport = function(){
-  this._hanger = [];
+  this._  planes = [];
 };
 
 Airport.prototype.planes = function(){
-  return  this._hanger;
+  return  this._planes;
 };
 
 Airport.prototype.clearForLanding = function(plane){
-  this._hanger.push(plane);
+  this._planes.push(plane);
 };
