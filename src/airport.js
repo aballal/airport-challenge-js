@@ -1,7 +1,7 @@
 'use strict';
 
 var Airport = function(){
-  this._  planes = [];
+  this._planes = [];
 };
 
 Airport.prototype.planes = function(){
@@ -10,4 +10,8 @@ Airport.prototype.planes = function(){
 
 Airport.prototype.clearForLanding = function(plane){
   this._planes.push(plane);
+};
+
+Airport.prototype.clearForTakeoff = function(plane){
+  this._planes.splice(this._planes.indexOf(plane),1);
 };
