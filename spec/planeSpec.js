@@ -16,4 +16,11 @@ describe('Plane', function() {
     plane.takeoff(airport);
     expect(airport.clearForTakeoff).toHaveBeenCalledWith(plane);
   });
+
+  it('cannot land if landed already', function() {
+    plane.land(airport);
+    expect(function() {
+      plane.land();
+    }).toThrowError('Cannot land, already landed!');
+  });
 });

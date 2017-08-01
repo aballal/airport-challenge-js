@@ -2,6 +2,7 @@
 
 var Plane = function() {
   this.name = "";
+  this.location = "In Air";
 };
 
 Plane.prototype.name = function() {
@@ -13,6 +14,10 @@ Plane.prototype.set = function(name) {
 };
 
 Plane.prototype.land = function(airport){
+  if (this.location !== "In Air") {
+    throw new Error('Cannot land, already landed!');
+  }
+  this.location = airport;
   airport.clearForLanding(this);
 };
 
