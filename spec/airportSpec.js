@@ -38,4 +38,17 @@ describe('Airport', function(){
       expect(airport.planes()).toEqual([]);
     });
   });
+
+  describe('does not clear a plane for', function() {
+    it('landing in stormy weather', function(){
+      weather.isStormy.and.returnValue(true);
+      expect(function() { airport.clearForLanding(plane); }).toThrowError('Cannot clear for landing in stormy weather');
+    });
+
+    it('takeoff in stormy weather', function() {
+      airport.clearForLanding(plane);
+      weather.isStormy.and.returnValue(true);
+      expect(function() { airport.clearForTakeoff(plane); }).toThrowError('Cannot clear for takeoff in stormy weather');
+    });
+  });
 });
