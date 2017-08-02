@@ -1,6 +1,8 @@
 'use strict';
 
-var Airport = function(){
+var Airport = function(name, weather){
+  this.name = name;
+  this.weather = weather;
   this._planes = [];
 };
 

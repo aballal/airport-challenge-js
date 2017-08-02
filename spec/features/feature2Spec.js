@@ -1,10 +1,7 @@
-plane1 = new Plane;
-plane1.set("Boeing");
+plane1 = new Plane('Boeing');
+plane2 = new Plane('Airbus');
 
-plane2 = new Plane;
-plane2.set("Airbus");
-
-airport = new Airport;
+airport = new Airport('London Heathrow');
 
 plane1.land(airport);
 plane2.land(airport);
