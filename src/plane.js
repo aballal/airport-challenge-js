@@ -1,8 +1,8 @@
 'use strict';
 
-var Plane = function(name, location) {
+var Plane = function(name) {
   this.name = name;
-  this.location = (location === undefined) ? "In Air" : location;
+  this.location =  'In Air';
 };
 
 Plane.prototype.name = function() {
@@ -10,13 +10,13 @@ Plane.prototype.name = function() {
 };
 
 Plane.prototype.land = function(airport){
-  if (this.location !== "In Air") throw new Error('Cannot land, already landed!');
+  if (this.location !== 'In Air') throw new Error('Cannot land, already landed!');
   airport.clearForLanding(this);
   this.location = airport;
 };
 
 Plane.prototype.takeoff = function (airport){
-  if (this.location === "In Air") {
+  if (this.location === 'In Air') {
     throw new Error('Cannot takeoff, already in air!');
   }
   airport.clearForTakeoff(this);

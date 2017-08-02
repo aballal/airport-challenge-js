@@ -1,13 +1,12 @@
 describe('Plane', function() {
-  var plane, landedPlane;
+  var plane;
   var airport;
   var weather;
 
   beforeEach(function() {
     weather = jasmine.createSpyObj('weather',['isStormy']);
     airport = jasmine.createSpyObj('airport',['weather','clearForLanding','clearForTakeoff']);
-    plane = new Plane("Boeing");
-    landedPlane = new Plane("Airbus", airport);
+    plane = new Plane('Boeing');
   });
 
   describe('constructor', function() {
@@ -15,12 +14,8 @@ describe('Plane', function() {
       expect(plane.name).toEqual('Boeing');
     });
 
-    it('is in air unless an airport is given', function() {
+    it('is in air', function() {
       expect(plane.location).toEqual('In Air');
-    });
-
-    it('can be at an airport', function() {
-      expect(landedPlane.location).toEqual(airport);
     });
   });
 
@@ -31,14 +26,16 @@ describe('Plane', function() {
     });
 
     it('cannot land if already landed', function() {
-      expect(function() { landedPlane.land(airport); } ).toThrowError('Cannot land, already landed!');
+      plane.land(airport);
+      expect(function() { plane.land(airport); } ).toThrowError('Cannot land, already landed!');
     });
   });
 
   describe ('takeoff', function() {
     it('can take off from an airport', function() {
-      landedPlane.takeoff(airport);
-      expect(airport.clearForTakeoff).toHaveBeenCalledWith(landedPlane);
+      plane.land(airport);
+      plane.takeoff(airport);
+      expect(airport.clearForTakeoff).toHaveBeenCalledWith(plane);
     });
 
     it('cannot take off if already in air', function() {

@@ -25,7 +25,7 @@ describe('Airport', function(){
   });
 
   describe('clears a plane for', function() {
-    beforeEach( function(){
+    beforeEach(function() {
       airport.clearForLanding(plane);
     });
 
